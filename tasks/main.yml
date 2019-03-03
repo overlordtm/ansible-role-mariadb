@@ -1,0 +1,7 @@
+---
+- import_tasks: install_debian.yml
+  when: ansible_os_family == 'Debian'
+
+- fail:
+    msg: "Unsupported OS!"
+  when: ansible_os_family != 'Debian'

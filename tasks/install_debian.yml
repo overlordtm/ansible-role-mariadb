@@ -1,0 +1,16 @@
+---
+- name: Add MariaDB repo APT key
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: '0xF1656F24C74CD1D8'
+
+- name: Add MariaDB repo
+  apt_repository:
+    repo: deb [arch=amd64,arm64,ppc64el] http://mirror.klaus-uwe.me/mariadb/repo/10.3/ubuntu {{ ansible_distribution_release }} main
+    state: present
+    filename: icinga2
+
+- name: Install mariadb-server
+  apt:
+    name: "mariadb-server"
+    state: present
